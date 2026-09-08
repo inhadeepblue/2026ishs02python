@@ -1,14 +1,12 @@
 import numpy as np
 
 array01 = np.zeros((3, 4))
+array02 = np.array([[1, 2, 3, 88], [-9, 4, 5, 6], [7, 55, 8, 9]])
 
-# print(array01)
-# print(array01.ndim)
-# print(array01.size)
-array01[2, 1] = 7.0
-array01[1, 2] = 11.0
+array01[0, 0] = 7.0
 print(array01)
-print(array01[1:, [1]])
-print(array01[1:, [1, 2]])
-print(array01[1:, 1:3])
-print(array01[array01 <= 7])
+#print(array01.reshape((2, 6)))
+print(array02)
+print(array01 + array02)
+print(array01 + 4.1)
+print(np.sum(array01))
