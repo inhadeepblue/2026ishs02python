@@ -2,7 +2,9 @@ import numpy as np
 import pandas as pd
 
 df = pd.read_csv('bike.csv')
-print(df.iloc[5:8, [0, 5, 7]])
-print(df.loc[5:7, ['datetime', 'temp', 'humidity']])
-#print(df.info())
-print(df[df['season']==4])  # 4/4 분기 전체 행
+#print(df.select_dtypes(exclude='float'))  # float를 제외한 모든 타입을 가진 칼럼 출력
+df = df.set_index('datetime')
+#print(df.head(25))
+print(df.filter(like='10:00:00', axis=0))
+print(df.filter(items=['weather', 'count']))
+print(df.filter(regex='p..d'))
