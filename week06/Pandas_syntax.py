@@ -1,14 +1,13 @@
 import pandas as pd
+import seaborn as sns
 
-df = pd.read_csv('bookings.csv')
+df = sns.load_dataset('penguins')
+# print(df.head())
+# print(df.tail())
+# print(df.describe())
+# print(df.info())
 
-df['Total_Review'] = df['Total_Review'].map(lambda x: str(x).replace('external','').strip())
-df['Total_Review'] = df['Total_Review'].map(lambda x: str(x).replace('review','').strip())
-df['Total_Review'] = df['Total_Review'].map(lambda x: str(x).replace(',',''))
-df['Total_Review'] = df['Total_Review'].astype('float')
-
-quantile = [0, 0.2, 0.4, 0.6, 0.8, 1]
-
-for idx in quantile:
-    q = df['Total_Review'].quantile(idx, interpolation='higher')
-    print(f'quantile({idx}) is {q}')
+print(df['species'].value_counts())
+bl = int(input("Enter the amount of bill_length: "))
+spcs = input("Enter the species: ")
+print(df.query('bill_length_mm >= @bl and species == @spcs'))
