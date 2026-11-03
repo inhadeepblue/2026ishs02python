@@ -1,11 +1,11 @@
 import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
 
-df = pd.read_csv("APPL_price.csv")
-s = df['Close'] > 175
-# print(s.sum())
-# print(df[s])
-# print(df[s][['Open','Close']])
-sc = s.cumsum()
-# print(sc)
-print(s.mul(sc).diff().where(lambda n: n < 0).ffill().add(sc, fill_value=0).max())
-print(df[s][['Date','Close']])
+df = pd.read_csv("weight_height.csv")
+print(df.describe())
+print(df.info())
+sns.scatterplot(x='Weight', y='Height', data=df)
+plt.show()
+
+print(df.sort_values(by='Weight', ascending=False))
